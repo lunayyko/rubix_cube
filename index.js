@@ -20,39 +20,43 @@ getNum = () => {
 getNum();
 
 getDirection = () => {
-    direction = prompt("Type L or R for direction");
-    direction.toUpperCase();
-    console.log(direction);
-    // while(true){
-    //     if (direction === 'L') {
-    //         direction = 'L'
-    //     } else if (direction === 'R'){
-    //         direction = 'R'
-    //     } else {
-    //         alert('please type L or R')
-    //     }
-    // }
+    while(true){
+        direction = prompt("Type L or R for direction");
+        direction.toUpperCase();
+        if (direction === 'L') {
+            return directionNum = -1
+        } else if (direction === 'R'){
+            return directionNum = 1
+        } else {
+            alert('please type L or R')
+        }
+    }
 }
 getDirection();
+console.log(direction)
+
+userNumberAbs = Math.abs(userNumber);
+console.log(userNumber)
+console.log(userNumberAbs)
 
 pushL = () => {
-    for( let i=0; i<userNumber; i++){
+    for( let i=0; i<userNumberAbs; i++){
         wordArr.push(wordArr.shift());
     }
 }
 pushR = () => {
-    for( let i=0; i<userNumber; i++){
+    for( let i=0; i<userNumberAbs; i++){
         wordArr.unshift(wordArr.pop());
     }
 }
 
 push = () => {    
-    if (direction == 'L'){
+    if (directionNum * userNumber < 0){
         pushL();
-    } else if (direction == 'R'){
+    } else if (directionNum * userNumber > 0){
         pushR();
     } else {
-        alert('what did you type??');
+        alert('0 is null');
     }
 }
 push();
